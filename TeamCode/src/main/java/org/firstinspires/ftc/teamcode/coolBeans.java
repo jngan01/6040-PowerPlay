@@ -42,7 +42,7 @@ public class coolBeans extends OpMode
         uppyAndDown.setPower(-gamepad1.right_trigger);
 
         if(gamepad1.left_bumper) {
-            claw.setPower(1);
+            claw.setPower(.9);
         }
         if(gamepad1.right_bumper){
             claw.setPower(-1);
