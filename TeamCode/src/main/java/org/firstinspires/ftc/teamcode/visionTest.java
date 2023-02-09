@@ -22,10 +22,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 
 @Autonomous(name = "visionTest")
 public class visionTest extends LinearOpMode{
-    VuforiaLocalizer vuforiaLocalizer;
-    VuforiaLocalizer.Parameters parameters;
+    /*VuforiaLocalizer vuforiaLocalizer;
     VuforiaTrackable visionTarget;
-    VuforiaTrackableDefaultListener listener;
+    VuforiaTrackableDefaultListener listener; */
 
     private WebcamName webcam;
 
@@ -41,50 +40,53 @@ public class visionTest extends LinearOpMode{
         webcam = hardwareMap.get(WebcamName.class, "Webcam 1");
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        parameters = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
+        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId); //R.id
         parameters.vuforiaLicenseKey = JustinRobodogs23;
         parameters.cameraName = webcam;
-        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        //parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
 
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
 
 
-        targets = vuforia.loadTrackablesFromAsset("JustinFTC23");
-        targets.get(0).setName("Yellow1");
-        targets.get(1).setName("Green2");
-        targets.get(2).setName("Purple3");
+        targets = this.vuforia.loadTrackablesFromAsset("JustinFTC23");
+        targets.get(0).setName("Sleepy");
+        targets.get(1).setName("Catan");
+        targets.get(2).setName("Triangle");
 
         targets.activate();
 
         waitForStart();
 
-        VuforiaTrackableDefaultListener yellow1 = (VuforiaTrackableDefaultListener) targets.get(0).getListener();
-        VuforiaTrackableDefaultListener green2 = (VuforiaTrackableDefaultListener) targets.get(1).getListener();
-        VuforiaTrackableDefaultListener purple3 = (VuforiaTrackableDefaultListener) targets.get(2).getListener();
+        //Set up Targets
+        VuforiaTrackableDefaultListener Sleepy = (VuforiaTrackableDefaultListener) targets.get(0).getListener();
+        VuforiaTrackableDefaultListener Catan = (VuforiaTrackableDefaultListener) targets.get(1).getListener();
+        VuforiaTrackableDefaultListener Triangle = (VuforiaTrackableDefaultListener) targets.get(2).getListener();
 
         telemetry.addLine("Vuforia Initialized");
         telemetry.update();
 
-        if(yellow1.isVisible()){
+        if(Triangle.isVisible()){
             telemetry.addLine("Side 1");
             telemetry.update();
-        }else if(green2.isVisible()){
+
+        }else if(Catan.isVisible()){
             telemetry.addLine("Side 2");
             telemetry.update();
-        }else if (purple3.isVisible()){
+
+        }else if (Sleepy.isVisible()){
             telemetry.addLine("Side 3");
             telemetry.update();
+
         }else {
             telemetry.addLine("nada");
             telemetry.update();
         }
 
-        while(opModeIsActive()) {
 
-            telemetry.update();
-            idle();
-        }
+
+
+
 
     }
 
