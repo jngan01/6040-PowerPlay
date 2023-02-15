@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.hardware.bosch.BNO055IMU;
@@ -20,7 +21,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 
 
-@Autonomous(name = "visionTest")
+@Autonomous
 public class visionTest extends LinearOpMode{
     /*VuforiaLocalizer vuforiaLocalizer;
     VuforiaTrackable visionTarget;
@@ -28,7 +29,7 @@ public class visionTest extends LinearOpMode{
 
     private WebcamName webcam;
 
-    private OpenGLMatrix lastLocation = null;
+    //private OpenGLMatrix lastLocation = null;
     private VuforiaLocalizer vuforia = null;
     private VuforiaTrackables targets = null;
 
@@ -49,19 +50,19 @@ public class visionTest extends LinearOpMode{
 
 
 
-        targets = this.vuforia.loadTrackablesFromAsset("JustinFTC23");
-        targets.get(0).setName("Sleepy");
+        targets = this.vuforia.loadTrackablesFromAsset("NewJustinFTC23");
+        targets.get(2).setName("Sleepy");
         targets.get(1).setName("Catan");
-        targets.get(2).setName("Triangle");
+        targets.get(0).setName("Triangle");
 
         targets.activate();
 
         waitForStart();
 
         //Set up Targets
-        VuforiaTrackableDefaultListener Sleepy = (VuforiaTrackableDefaultListener) targets.get(0).getListener();
+        VuforiaTrackableDefaultListener Sleepy = (VuforiaTrackableDefaultListener) targets.get(2).getListener();
         VuforiaTrackableDefaultListener Catan = (VuforiaTrackableDefaultListener) targets.get(1).getListener();
-        VuforiaTrackableDefaultListener Triangle = (VuforiaTrackableDefaultListener) targets.get(2).getListener();
+        VuforiaTrackableDefaultListener Triangle = (VuforiaTrackableDefaultListener) targets.get(0).getListener();
 
         telemetry.addLine("Vuforia Initialized");
         telemetry.update();
