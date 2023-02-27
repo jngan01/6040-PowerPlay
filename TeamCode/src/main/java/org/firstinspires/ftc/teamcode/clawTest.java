@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
-public class clawTest  extends OpMode{
+public class  clawTest  extends OpMode{
     private CRServo clawIntake;
     private DcMotor fourBar;
     private DcMotor topLift;
@@ -45,9 +45,10 @@ public class clawTest  extends OpMode{
             fourBar.setPower(0);
         }
 
-        topLift.setPower(-gamepad1.left_trigger );
+        topLift.setPower(-gamepad1.left_trigger ); //Lift up
         bottomLift.setPower(gamepad1.left_trigger);
-        topLift.setPower(gamepad1.right_trigger );
+
+        topLift.setPower(gamepad1.right_trigger ); //Lift not
         bottomLift.setPower(-gamepad1.right_trigger);
 
         }

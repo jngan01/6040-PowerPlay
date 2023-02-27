@@ -51,7 +51,7 @@ public class justinJellyMop extends OpMode {
 
 // claw
         if(gamepad2.a){
-            claw.setPower(.25);
+            claw.setPower(.5);
         }else{
             claw.setPower(-.25);
         }
@@ -65,9 +65,9 @@ public class justinJellyMop extends OpMode {
 
 //four bar
         if(gamepad2.left_bumper){
-            fourBar.setPower(.25);
+            fourBar.setPower(1);
         }else if(gamepad2.right_bumper){
-            fourBar.setPower(-1);
+            fourBar.setPower(-.25);
         }
 
 // drive

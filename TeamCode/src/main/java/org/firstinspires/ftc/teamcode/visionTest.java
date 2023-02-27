@@ -44,51 +44,50 @@ public class visionTest extends LinearOpMode{
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId); //R.id
         parameters.vuforiaLicenseKey = JustinRobodogs23;
         parameters.cameraName = webcam;
+        parameters.useExtendedTracking = false;
         //parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
 
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
 
 
-        targets = this.vuforia.loadTrackablesFromAsset("NewJustinFTC23");
-        targets.get(2).setName("Sleepy");
-        targets.get(1).setName("Catan");
-        targets.get(0).setName("Triangle");
+        targets = this.vuforia.loadTrackablesFromAsset("JustinFTC23");
+        targets.get(0).setName("Sleepy");
+        targets.get(2).setName("Catan");
+        targets.get(1).setName("Triangle");
 
         targets.activate();
 
         waitForStart();
 
         //Set up Targets
-        VuforiaTrackableDefaultListener Sleepy = (VuforiaTrackableDefaultListener) targets.get(2).getListener();
-        VuforiaTrackableDefaultListener Catan = (VuforiaTrackableDefaultListener) targets.get(1).getListener();
-        VuforiaTrackableDefaultListener Triangle = (VuforiaTrackableDefaultListener) targets.get(0).getListener();
+        VuforiaTrackableDefaultListener Sleepy = (VuforiaTrackableDefaultListener) targets.get(0).getListener();
+        VuforiaTrackableDefaultListener Catan = (VuforiaTrackableDefaultListener) targets.get(2).getListener();
+        VuforiaTrackableDefaultListener Triangle = (VuforiaTrackableDefaultListener) targets.get(1).getListener();
 
         telemetry.addLine("Vuforia Initialized");
         telemetry.update();
 
-        if(Triangle.isVisible()){
-            telemetry.addLine("Side 1");
-            telemetry.update();
+        while(opModeIsActive()) {
+            if (Triangle.isVisible()) {
+                telemetry.addLine("Triforce");
+                telemetry.update();
 
-        }else if(Catan.isVisible()){
-            telemetry.addLine("Side 2");
-            telemetry.update();
+            } else if (Catan.isVisible()) {
+                telemetry.addLine("Catan");
+                telemetry.update();
 
-        }else if (Sleepy.isVisible()){
-            telemetry.addLine("Side 3");
-            telemetry.update();
+            } else if (Sleepy.isVisible()) {
+                telemetry.addLine("Sleepy");
+                telemetry.update();
 
-        }else {
-            telemetry.addLine("nada");
-            telemetry.update();
+            } else {
+                telemetry.addLine("nada");
+                telemetry.update();
+            }
+
+
         }
-
-
-
-
-
-
     }
 
 }
