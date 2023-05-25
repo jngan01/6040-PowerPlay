@@ -51,6 +51,8 @@ public class visionButDifferent extends LinearOpMode {
 
             OpenGLMatrix latestLocation = listener.getUpdatedRobotLocation();
 
+            
+
             if(latestLocation != null)
                 lastKnownLocation = latestLocation;
 
