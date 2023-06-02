@@ -22,6 +22,7 @@ public class EncodersTest extends LinearOpMode{
     private int rightFrontPos;
     private int rightBackPos;
 
+
     private DcMotor fourBar;
     private DcMotor topLift;
     private DcMotor bottomLift;
@@ -72,8 +73,23 @@ public class EncodersTest extends LinearOpMode{
 
         waitForStart();
 
-        drive(1000, 1000, 1000, 1000, .25);
-        drive(1000, 1000, -1000, -1000, 0.25);
+        claw.setPower(1);
+        sleep(1000);
+        fourBar.setPower(.7);
+        sleep(800);
+        fourBar.setPower(0.25);
+
+        drive(-450, 450, 450, -450, .25);
+        sleep(500);
+        drive(820, 820, 820, 820, 0.25);
+
+        fourBar.setPower(-.5);
+        sleep(750);
+        claw.setPower(-1);
+        sleep(750);
+
+        drive(-900, -900, -900, -900, .25);
+        drive(-600, 600, 600, -600, .25);
 
     }
 

@@ -78,8 +78,8 @@ public class justinJellyMop extends OpMode {
 
         if(gamepad1.right_stick_x < 0){
             leftFront.setPower(-.5);
-            rightFront.setPower(.5);
             leftBack.setPower(-.5);
+            rightFront.setPower(.5);
             rightBack.setPower(.5);
         }if(gamepad1.right_stick_x > 0){
             leftFront.setPower(.5);
